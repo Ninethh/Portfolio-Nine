@@ -1,0 +1,503 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #171717;
+}
+
+.portada {
+  height: 100vh;
+  background-image: url("../images/flowersandpapertexture.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f14b7d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-portada h2 {
+  color: #fff;
+  font-family: inter;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  height: 58px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.text-portada a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.text-portada a:hover h2 {
+  color: #ff3167;
+}
+
+.image {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.image > img:first-child {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  width: min(479px, 85vw);
+  height: auto;
+  top: 243px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: openOverlay 0.5s linear forwards;
+}
+/* ANIMATIONS (Se ha fet una busqueda amb ajuda de la ia en aquest apartat) */
+.image:hover .overlay {
+  animation: closeOverlay 0.3s linear forwards;
+}
+
+.about {
+  background: url("../images/portraitbackground.png") 100% no-repeat;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 63% auto;
+  background-color: #171717;
+  overflow: hidden;
+}
+
+.container-about {
+  position: relative;
+  min-height: 100svh;
+}
+
+.text-title {
+  position: absolute;
+  z-index: 1;
+  top: 53px;
+  left: 0;
+  width: 891px;
+  height: 593px;
+  color: #d75c97;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 128px;
+  font-weight: 700;
+  line-height: 0.88;
+  text-align: left;
+}
+
+.text-title h1 {
+  position: absolute;
+  margin: 0;
+  font-size: 134px;
+  width: max-content;
+  cursor: pointer;
+  overflow: hidden;
+  height: 147px;
+  color: transparent;
+}
+
+/*Aqui només se ha utilizat la IA per trobar el error, ja que no es feia la animació cap a baix.
+basicament era perque no hi havia posat el data-text al index.html.*/
+.text-title h1:before {
+  content: attr(data-text);
+  display: block;
+  color: #d75c97;
+  transition: transform 0.5s ease;
+}
+
+.text-title h1:hover:before {
+  transform: translateY(100%);
+}
+
+.text-title h1:nth-child(1) {
+  top: 30px;
+  left: 903px;
+}
+
+.text-title h1:nth-child(2) {
+  top: 183px;
+  left: 954px;
+}
+
+.text-title h1:nth-child(3) {
+  top: 327px;
+  left: 724px;
+}
+
+.text-title h1:nth-child(4) {
+  top: 483px;
+  left: 817px;
+}
+
+.text-tags {
+  position: absolute;
+  z-index: 2;
+  top: 270px;
+  left: 211px;
+  width: 328px;
+  height: 431px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.text-tags h1 {
+  position: absolute;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+
+  transition: color 0.5s ease;
+}
+
+.text-tags h1:nth-child(1) {
+  top: 0;
+  right: 0;
+}
+
+.text-tags h1:nth-child(2) {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.text-tags h1:nth-child(3) {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-tags h1:hover {
+  color: #ff3167;
+  transition: color 0.315s ease;
+}
+
+.icon {
+  position: absolute;
+  right: 30px;
+  bottom: 42px;
+  display: grid;
+  width: 80px;
+  height: 64px;
+  place-items: center;
+  color: #d75c97;
+  font-size: 64px;
+  line-height: 1;
+}
+
+@media (max-width: 700px) {
+  .about {
+    background-size: auto 100%;
+    background-position: 22% center;
+  }
+
+  .text-title {
+    top: 48px;
+    left: 12%;
+    right: 24px;
+    width: auto;
+    height: auto;
+    font-size: 60px;
+  }
+
+  .text-tags {
+    top: auto;
+    right: 24px;
+    bottom: 72px;
+    left: 24px;
+    width: auto;
+    height: 352px;
+    font-size: 24px;
+  }
+
+  .icon {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+.container-works {
+  position: relative;
+  height: 982px;
+}
+
+.works-title {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* SWIPER */
+.works {
+  min-height: 100svh;
+  background: #000;
+  overflow: hidden;
+}
+
+.container-works {
+  position: relative;
+  min-height: 100svh;
+  padding: 56px 0 64px;
+  box-sizing: border-box;
+}
+
+.works-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 24px 24px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(24px, 2vw, 36px);
+  line-height: 1;
+  text-align: center;
+}
+
+.works-swiper {
+  position: relative;
+  left: 0;
+  width: 100%;
+  overflow: visible;
+}
+
+.works-swiper .swiper-wrapper {
+  align-items: flex-start;
+}
+
+.works-swiper .work-slide {
+  width: 29.5vw;
+  aspect-ratio: 215 / 327;
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: #080808;
+  position: relative;
+}
+
+.work-slide img,
+.work-slide iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.work-slide img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.work-slide--video iframe {
+  aspect-ratio: auto;
+}
+
+@media (max-width: 700px) {
+  .container-works {
+    padding-top: 40px;
+  }
+
+  .works-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .works-swiper .work-slide {
+    width: 78vw;
+  }
+}
+
+.footer {
+  display: flex;
+  height: 632px;
+  justify-content: center;
+  align-items: center;
+  background: #171717;
+}
+
+.container-contact {
+  position: relative;
+  width: min(1404px, calc(100vw - 48px));
+  height: 480px;
+}
+
+.contact-text,
+.contact-cta {
+  color: var(--Foxy-Pink, #ff3167);
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+.contact-text {
+  position: absolute;
+  z-index: 3;
+  top: 64px;
+  left: 0;
+  width: 427px;
+  font-size: 85px;
+  text-align: left;
+}
+
+.contact-cta {
+  position: absolute;
+  z-index: 3;
+  top: 32px;
+  left: calc(50% + 300px);
+  width: 350px;
+  font-size: 72px;
+  text-align: left;
+}
+
+.card-contac1 {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 50%;
+  display: grid;
+  width: 480px;
+  height: 480px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  flex-shrink: 0;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row;
+}
+
+.card-contac2 {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  display: grid;
+  width: 480px;
+  height: 480px;
+  transform: translateX(-50%);
+  flex-shrink: 0;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row;
+}
+
+.contact-social,
+.contact-social > img {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-box,
+.contact-social > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-box {
+  pointer-events: auto;
+}
+
+.contact-social {
+  text-decoration: none;
+}
+
+.contact-social a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: inherit;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+}
+
+.contact-box > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1.2s ease;
+}
+
+.contact-box:hover > img {
+  opacity: 0;
+}
+
+.contact-box.is-revealed {
+  pointer-events: none;
+}
+
+.contact-box.is-revealed > img {
+  opacity: 0;
+}
+
+.card-contac1:has(.contact-box:nth-child(1):hover)
+  ~ .card-contac2
+  .contact-social:nth-child(1)
+  i,
+.card-contac1:has(.contact-box:nth-child(2):hover)
+  ~ .card-contac2
+  .contact-social:nth-child(2)
+  i,
+.card-contac1:has(.contact-box:nth-child(3):hover)
+  ~ .card-contac2
+  .contact-social:nth-child(3)
+  i,
+.card-contac1:has(.contact-box:nth-child(4):hover)
+  ~ .card-contac2
+  .contact-social:nth-child(4)
+  i {
+  transform: scale(1.2);
+}
+
+.contact-social {
+  position: relative;
+}
+
+.contact-social i {
+  font-size: 48px;
+  color: #ff3167;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.contact-social a:hover i {
+  transform: scale(1.2);
+}
+
+/* ANIMATIONS OF THE NOTE (Se ha fet una busqueda amb ajuda de la ia en aquest apartat) */
+@keyframes openOverlay {
+  0% {
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes closeOverlay {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
